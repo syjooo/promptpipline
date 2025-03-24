@@ -1,13 +1,7 @@
 from fastapi import FastAPI
+from app.routers import chathistory_router, perschat_router
 
-app = FastAPI()
+app = FastAPI(title="성격 분석 챗봇 API")
 
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello():
-    return {"message": "Hello 세연"}
+app.include_router(chathistory_router)
+app.include_router(perschat_router)
